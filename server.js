@@ -13,13 +13,12 @@ app.use(
   cors({
     origin: process.env.CLIENT_URL || "*",
     methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeader: ["Content-Type", "Authorization"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
 // routes
 app.use("/api/v1", authRoutes);
-
 
 const PORT = process.env.PORT || 8000;
 
