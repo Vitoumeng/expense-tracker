@@ -33,14 +33,21 @@ exports.getAllIncome = async (req, res) => {
 
   try {
     const income = await Income.find({ userId }).sort({ date: -1 });
-    
+
     res.json(income);
   } catch (e) {
     res.status(500).json({ message: "Server Error" });
   }
 };
 // deleteIncome Source
-exports.deleteIncome = async (req, res) => {};
+exports.deleteIncome = async (req, res) => {
+  try {
+    await Income.findByIdAndDelete(req.params.id);
+    res.json({ message: "Income deleted successfully" });
+  } catch (e) {
+    res.status(500).json({ message: "Server Error" });
+  }
+};
 
 // downloadIncomeExcel Source
 exports.downloadIncomeExel = async (req, res) => {};
