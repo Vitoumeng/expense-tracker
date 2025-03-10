@@ -1,0 +1,37 @@
+const User = require("../models/User");
+const Income = require("../models/Income");
+
+// addIncome Source
+exports.addIncome = async (req, res) => {
+  const userId = req.user.id;
+
+  try {
+    const { icon, source, amount, date } = req.body;
+
+    // validation: check if missing fileds
+    if (!source || !amount || !date) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
+
+    const newIncome = new Income({
+      userId,
+      icon,
+      source,
+      amount,
+      date: new Date(date),
+    });
+
+    await newIncome.save();
+    res.status(200).json(newIncome);
+  } catch (e) {
+    res.status(500).json({ messsage: "Server Error" });
+  }
+};
+// getAllIncome Source
+exports.getAllIncome = async (req, res) => {};
+
+// deleteIncome Source
+exports.deleteIncome = async (req, res) => {};
+
+// downloadIncomeExcel Source
+exports.downloadIncomeExel = async (req, res) => {};
