@@ -2,3 +2,4 @@ node_modules
 uploads
 .env
 .gitignore
+income_details.xlsx
