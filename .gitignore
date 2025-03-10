@@ -3,3 +3,4 @@ uploads
 .env
 .gitignore
 income_details.xlsx
+expense_details.xlsx
